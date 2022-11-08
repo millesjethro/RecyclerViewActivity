@@ -29,18 +29,20 @@ class DetailsScreenActivity : AppCompatActivity(), View.OnClickListener {
 
         var bookinfo = arrayListOf(
             intent.getSerializableExtra("BookName"),
-            intent.getSerializableExtra("LongDesc"),
+            intent.getSerializableExtra("Author"),
             intent.getSerializableExtra("ShortDesc"),
+            intent.getSerializableExtra("LongDesc"),
             intent.getSerializableExtra("PubDate")
         )
         val mIntent = intent
         val intValue = mIntent.getIntExtra("ImageNum", 0)
 
         supportActionBar?.title = bookinfo[0].toString()
-        binding.txtActName.text = bookinfo[0].toString()
+        binding.txtActName.text = "Book Title: "+bookinfo[0].toString()
+        binding.txtauthornamedetails.text = "Book Author: "+bookinfo[1].toString()
         binding.txtActShortdesc.text = bookinfo[2].toString()
-        binding.txtactlongdesc.text = bookinfo[1].toString()
-        binding.txtactdatepub.text = "Date Published: "+bookinfo[3]
+        binding.txtactlongdesc.text = bookinfo[3].toString()
+        binding.txtactdatepub.text = "Date Published: "+bookinfo[4]
         binding.imgactdeetails.setImageResource(imageId[intValue])
         binding.btnback.setOnClickListener(this)
     }

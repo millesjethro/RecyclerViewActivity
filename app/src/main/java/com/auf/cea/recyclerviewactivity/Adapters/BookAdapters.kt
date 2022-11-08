@@ -33,6 +33,7 @@ class BookAdapters (private var booklist:ArrayList<BooksModel>, private var cont
                 val BooksModel = booklist[adapterPosition]
                 val intent = Intent(context, DetailsScreenActivity::class.java)
                 intent.putExtra("BookName",BooksModel.name)
+                intent.putExtra("Author",BooksModel.author)
                 intent.putExtra("ShortDesc",BooksModel.shortDescription)
                 intent.putExtra("LongDesc", BooksModel.description)
                 intent.putExtra("PubDate",BooksModel.datePublished)

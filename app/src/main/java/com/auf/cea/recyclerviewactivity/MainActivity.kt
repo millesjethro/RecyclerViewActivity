@@ -26,17 +26,18 @@ class MainActivity : AppCompatActivity() {
             R.anim.rotate);
         var animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
             R.anim.fade_in);
+
         object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                binding.searchlist.setVisibility(View.GONE)
+                binding.searchlist.visibility = View.GONE
                 binding.imgloading.startAnimation(animRotate)
             }
 
             override fun onFinish() {
                 binding.imgloading.clearAnimation()
-                binding.imgloading.setVisibility(View.GONE)
-                binding.searchlist.setVisibility(View.VISIBLE)
+                binding.imgloading.visibility = View.GONE
+                binding.searchlist.visibility = View.VISIBLE
                 binding.searchlist.startAnimation(animFadein)
 
             }
@@ -48,7 +49,8 @@ class MainActivity : AppCompatActivity() {
 
         //https://www.rd.com/list/books-read-before-die/
         var bookList = arrayListOf(
-            BooksModel("Anna Karenina","Leo Tolstoy",
+            BooksModel("Anna Karenina",
+                "Leo Tolstoy",
                 "Ah, Anna Karenina. Lusty love affair or best romance of all time? Most critics pin it as one of most iconic literary love stories, and for good reason",
                 "Leo Tolstoy’s sweeping Russian tale of star-crossed lovers is littered with swoon-worthy quotes like, “He stepped down, trying not to look long at her, as if she were the sun, yet he saw her, like the sun, even without looking.” Described by Fyodor Dostoevsky as “flawless,” this one belongs on any book collector’s shelf.",
                 "1878",
