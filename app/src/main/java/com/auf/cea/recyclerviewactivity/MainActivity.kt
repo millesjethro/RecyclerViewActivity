@@ -16,14 +16,17 @@ import com.auf.cea.recyclerviewactivity.models.BooksModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.title = "BOOK LIST"
         var animRotate = AnimationUtils.loadAnimation(getApplicationContext(),
             R.anim.rotate);
-        object : CountDownTimer(5000, 1000) {
+        var animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
+            R.anim.fade_in);
+        object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 binding.searchlist.setVisibility(View.GONE)
@@ -34,8 +37,12 @@ class MainActivity : AppCompatActivity() {
                 binding.imgloading.clearAnimation()
                 binding.imgloading.setVisibility(View.GONE)
                 binding.searchlist.setVisibility(View.VISIBLE)
+                binding.searchlist.startAnimation(animFadein)
+
             }
         }.start()
+
+
 
 
 
