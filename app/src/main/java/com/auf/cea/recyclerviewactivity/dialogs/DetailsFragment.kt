@@ -44,18 +44,14 @@ class DetailsFragment : DialogFragment() {
         var txtdatepub = rootView.findViewById<TextView>(R.id.txtdatepub)
         var imageview = rootView.findViewById<ImageView>(R.id.imgFragDetials)
 
-        var imageNumber = getArguments()?.getInt("ImageNum")
-        if(getArguments() != null){
-            txtname.text = (getArguments()?.getString("BookName"))
-            txtShortdesc.text = (getArguments()?.getString("ShortDesc"))
-            txtdatepub.text = "Book Published: "+(getArguments()?.getString("PubDate"))
+        var imageNumber = arguments?.getInt("ImageNum")
+        if(arguments != null){
+            txtname.text = (arguments?.getString("BookName"))
+            txtShortdesc.text = (arguments?.getString("ShortDesc"))
+            txtdatepub.text = "Book Published: "+(arguments?.getString("PubDate"))
             imageview.setImageResource(imageId[imageNumber!!])
         }
-        closebutton.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v:View){
-                dismiss()
-            }
-        })
+        closebutton.setOnClickListener { dismiss() }
 
         return rootView
     }

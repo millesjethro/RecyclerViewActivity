@@ -18,10 +18,6 @@ import com.auf.cea.recyclerviewactivity.models.BooksModel
 class BookAdapters (private var booklist:ArrayList<BooksModel>, private var context: Context): RecyclerView.Adapter<BookAdapters.SearchRVViewHolder>() {
     lateinit var imageId : Array<Int>
 
-    val booksinitiallist = ArrayList<BooksModel>().apply{
-        addAll(booklist)
-    }
-
    inner class SearchRVViewHolder(val binding: ContentSearchBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(binding: ContentSearchBinding) {
             binding.buynow.setOnClickListener {
@@ -42,14 +38,14 @@ class BookAdapters (private var booklist:ArrayList<BooksModel>, private var cont
             }
             binding.btnview.setOnClickListener {
                 val BooksModel = booklist[adapterPosition]
-                var fm = (context as AppCompatActivity).supportFragmentManager
+                val fm = (context as AppCompatActivity).supportFragmentManager
                 val details = DetailsFragment()
                 val bundle = Bundle()
                 bundle.putString("BookName",BooksModel.name)
                 bundle.putString("ShortDesc",BooksModel.shortDescription)
                 bundle.putString("PubDate",BooksModel.datePublished)
                 bundle.putInt("ImageNum",BooksModel.imageID)
-                details.setArguments(bundle)
+                details.arguments = bundle
                 details.show(fm,"Details Fragment")
 
             }

@@ -22,9 +22,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "BOOK LIST"
-        var animRotate = AnimationUtils.loadAnimation(getApplicationContext(),
+        val animRotate = AnimationUtils.loadAnimation(
+            applicationContext,
             R.anim.rotate);
-        var animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
+        val animFadein = AnimationUtils.loadAnimation(
+            applicationContext,
             R.anim.fade_in);
 
         object : CountDownTimer(2000, 1000) {
